@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             QuitandaMerkFrutasTheme {
                 AppHost(
-                    name = "Quitanda Merk Frutas",
+                    name = "Gerar Nova release",
                 )
             }
         }
