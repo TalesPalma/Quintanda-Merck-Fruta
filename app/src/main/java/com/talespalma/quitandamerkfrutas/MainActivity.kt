@@ -23,7 +23,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             QuitandaMerkFrutasTheme {
                 AppHost(
-                    name = "Gerar Nova release",
+                    name = "Vamos Gerar um Realease",
                 )
             }
         }
