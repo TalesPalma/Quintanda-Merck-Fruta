@@ -7,10 +7,11 @@ import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.compose.rememberNavController
+import com.talespalma.quitandamerkfrutas.navigate.HostNavigation
+import com.talespalma.quitandamerkfrutas.ui.components.MenuBottom
 import com.talespalma.quitandamerkfrutas.ui.theme.QuitandaMerkFrutasTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -21,29 +22,28 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             QuitandaMerkFrutasTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
+                AppHost(
+                    name = "Quitanda Merk Frutas",
+                )
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Ola pessoal sera que deu certo ?",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
 @Composable
-fun GreetingPreview() {
-    QuitandaMerkFrutasTheme {
-        Greeting("Android")
+fun AppHost(name: String) {
+    val navController = rememberNavController()
+    Scaffold(modifier = Modifier.fillMaxSize()
+        , topBar = {},
+        bottomBar = {
+            MenuBottom(navController = navController)
+        }
+    ) { innerPadding ->
+        HostNavigation(
+            modifier = Modifier.padding(innerPadding),
+            navController = navController
+        )
     }
 }
+

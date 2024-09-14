@@ -63,6 +63,7 @@ dependencies {
     ksp(libs.hilt.android.compiler) // KSP used for all kapt configurations
 
     //Room
+    implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
 
     //Core dependencies
