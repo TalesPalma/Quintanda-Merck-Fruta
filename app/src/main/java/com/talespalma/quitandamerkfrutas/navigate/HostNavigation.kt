@@ -12,7 +12,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.talespalma.quitandamerkfrutas.ui.screens.HomeScreen
 
-
 @Composable
 fun HostNavigation(modifier: Modifier = Modifier, navController: NavHostController) {
     NavHost(navController = navController, startDestination = "home") {
