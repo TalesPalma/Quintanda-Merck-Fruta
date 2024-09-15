@@ -10,16 +10,21 @@ import javax.inject.Inject
 
 
 data class HomeData(
-    val name:String = "OLA PESSOAL TESTANDO HILT",
-    val age:Int = 0,
+    val custoFixo : Float = 0F,
+    val custoVariavel : Float = 0F,
+    val quantidade : Float = 0F,
+    val margemLucro : Float = 0F,
+    val precoVenda : Float = 0F,
 )
 
 
 
 @HiltViewModel
 class HomeViewModel @Inject constructor()  :ViewModel() {
-
     private val _uiState = MutableStateFlow(HomeData())
     val uiState: StateFlow<HomeData> = _uiState.asStateFlow()
+
+
+
 
 }
