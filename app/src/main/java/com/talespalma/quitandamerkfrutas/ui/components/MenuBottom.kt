@@ -15,7 +15,7 @@ import androidx.navigation.NavController
 import com.talespalma.quitandamerkfrutas.navigate.Screens
 
 
-val listRoutes: List<Screens> = listOf(Screens.Home, Screens.Add)
+val listRoutes: List<Screens> = listOf(Screens.Home, Screens.Infos)
 
 @Composable
 fun MenuBottom(modifier: Modifier = Modifier, navController: NavController?) {
