@@ -10,7 +10,7 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.talespalma.quitandamerkfrutas.navigate.Screens
-import com.talespalma.quitandamerkfrutas.ui.components.FormCalculator
+import com.talespalma.quitandamerkfrutas.ui.components.Form.FormCalculator
 import com.talespalma.quitandamerkfrutas.viewModels.HomeViewModel
 
 
