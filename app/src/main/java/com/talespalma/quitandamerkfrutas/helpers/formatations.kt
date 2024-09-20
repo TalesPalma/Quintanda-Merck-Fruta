@@ -7,7 +7,7 @@ import java.util.Locale
 fun parseCurrencyInput(input: String): BigDecimal {
     val cleanInput = input.replace("[^\\d.,]".toRegex(), "") // Remove caracteres não numéricos
     val normalizedInput = cleanInput.replace(',', '.') // Substitui vírgula por ponto
-    return normalizedInput.toBigDecimalOrNull() ?: BigDecimal.ZERO
+    return normalizedInput.toBigDecimalOrNull()?.movePointRight(1) ?: BigDecimal.ZERO
 }
 
 fun formatCurrency(value: BigDecimal): String {
