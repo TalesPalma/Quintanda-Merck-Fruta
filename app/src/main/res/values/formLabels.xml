@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="custo_variavel">Custo Variavel</string>
+    <string name="custo_fixo">Custo Fixo</string>
+    <string name="quantiade">Quantidade de Produtos</string>
+</resources>

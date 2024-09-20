@@ -17,6 +17,7 @@ data class HomeUiState(
     val quantidade: Int = 0, // Alterado para Int
     val margemLucro: BigDecimal = BigDecimal.ZERO,
     val precoVenda: BigDecimal = BigDecimal.ZERO,
+    val formView: Boolean = false
 )
 
 
@@ -76,6 +77,14 @@ class HomeViewModel @Inject constructor() : ViewModel() {
         }
 
         _stateUpdate.value = true
+    }
+
+    fun updateFormView(state : Boolean) {
+        _uiState.update { currentState ->
+            currentState.copy(
+                formView = state
+            )
+        }
     }
 
 
