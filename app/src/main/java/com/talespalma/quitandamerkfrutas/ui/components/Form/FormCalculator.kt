@@ -13,6 +13,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -32,7 +33,7 @@ fun FormCalculator(
 ) {
     val uiState by viewModel.uiState.collectAsState()
     if (uiState.formView) {
-        FormCustoFixo( formViewModel = viewModel , onClickCloseScreen = {
+        FormCustoFixo(formViewModel = viewModel, onClickCloseScreen = {
             viewModel.updateFormView(false)
         }
         )
@@ -62,7 +63,7 @@ private fun AllFieldsForm(
             },
             label = stringResource(R.string.custo_fixo).uppercase(),
         )
-        Button(onClick = { viewModel.updateFormView(true) }) {
+        Button(onClick = { viewModel.updateFormView(true) }, shape = RectangleShape) {
             Text("Adicione elementos do produto")
         }
         Spacer(modifier = Modifier.padding(10.dp))
