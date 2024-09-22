@@ -31,11 +31,23 @@ class FormCustoFixoViewModel @Inject constructor() : ViewModel() {
         )
     }
 
-    fun updateListProducts(){
+    fun addNewProductList(){
         _listProducts.add(Produto())
         _uiState.update { currentState ->
             currentState.copy(listProducts = _listProducts)
         }
     }
+
+    fun updateProductList(newName: String, newPrice: BigDecimal,index: Int){
+        _listProducts[index] = _listProducts[index].copy(
+            nome = newName,
+            preco = newPrice
+        )
+        _uiState.update { currentState ->
+            currentState.copy(listProducts = _listProducts)
+        }
+    }
+
+
 
 }
