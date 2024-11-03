@@ -36,7 +36,7 @@ fun HostNavigation(
         composable(
             route = Screens.Infos.route,
         ) {
-            InfosScreen(viewModel = viewModel)
+            InfosScreen()
         }
     }
 }
