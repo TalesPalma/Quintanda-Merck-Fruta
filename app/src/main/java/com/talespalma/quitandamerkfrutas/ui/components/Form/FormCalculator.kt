@@ -18,7 +18,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.talespalma.quitandamerkfrutas.R
+import com.talespalma.quitandamerkfrutas.database.Product
 import com.talespalma.quitandamerkfrutas.helpers.formatCurrency
 import com.talespalma.quitandamerkfrutas.helpers.parseCurrencyInput
 import com.talespalma.quitandamerkfrutas.viewModels.HomeUiState
@@ -28,7 +30,7 @@ import com.talespalma.quitandamerkfrutas.viewModels.HomeViewModel
 @Composable
 fun FormCalculator(
     modifier: Modifier = Modifier,
-    viewModel: HomeViewModel = HomeViewModel(),
+    viewModel: HomeViewModel = hiltViewModel(),
     onClickButtonGenerate: () -> Unit
 ) {
     val uiState by viewModel.uiState.collectAsState()
@@ -54,7 +56,15 @@ private fun AllFieldsForm(
             .fillMaxWidth()
             .padding(30.dp), horizontalAlignment = Alignment.CenterHorizontally
     ) {
-
+        FieldTextForm(
+            modifier = modifier,
+            value = uiState.productName,
+            onValueChange = {
+                viewModel.updateProductName(it)
+            },
+            label = stringResource(R.string.nome).uppercase()
+        )
+        Spacer(modifier = Modifier.padding(10.dp))
         FieldTextForm(
             modifier = modifier,
             value = formatCurrency(uiState.custoFixo),
@@ -90,14 +100,23 @@ private fun AllFieldsForm(
 
         OutlinedButton(
             modifier = Modifier.fillMaxWidth(),
-            onClick = onClickButtonGenerate
+            onClick = {
+                viewModel.saveProduct(product = Product(
+                    name = uiState.productName,
+                    price = uiState.precoVenda.toDouble(),
+                ))
+                onClickButtonGenerate()
+            }
         ) {
-            Text(text = "Gerar Relatorio")
+            Text(text = "Salvar Produto")
         }
+        Spacer(
+            modifier = Modifier.padding(10.dp)
+        )
         Text(
             "Preco de venda : ${uiState.precoVenda}",
             fontWeight = FontWeight.Bold,
-            style = MaterialTheme.typography.titleMedium
+            style = MaterialTheme.typography.titleLarge
         )
     }
 }

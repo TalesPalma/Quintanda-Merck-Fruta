@@ -19,8 +19,6 @@ val listRoutes: List<Screens> = listOf(Screens.Home, Screens.Infos)
 
 @Composable
 fun MenuBottom(modifier: Modifier = Modifier, navController: NavController?) {
-
-
     var selectedItem by remember { mutableIntStateOf(0) }
     NavigationBar(
         contentColor = Color.White,

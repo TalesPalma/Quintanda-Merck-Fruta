@@ -2,6 +2,7 @@ package com.talespalma.quitandamerkfrutas.viewModels
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
@@ -18,8 +19,8 @@ class InfosViewModel @Inject constructor(
     private val repository : ProductRepository
 ) : ViewModel() {
 
-    private val _products = mutableStateOf<List<Product>>(emptyList())
-    val products : State<List<Product>> = _products
+    private val _products = mutableStateListOf<Product>()
+    val products  = _products
 
     private var _onLoading by mutableStateOf(false)
     val onLoading: Boolean
@@ -32,8 +33,15 @@ class InfosViewModel @Inject constructor(
 
     private fun loadProducts(){
          viewModelScope.launch {
-             _products.value = repository.getAllProducts()
+             _products.addAll(repository.getAllProducts())
          }
+    }
+
+     fun deleteProduct(product: Product){
+        viewModelScope.launch {
+            repository.deleteProduct(product)
+            _products.remove(product)
+        }
     }
 
 }

@@ -43,7 +43,7 @@ import java.math.BigDecimal
 fun FormCustoFixo(
     modifier: Modifier = Modifier,
     onClickCloseScreen: () -> Unit = {},
-    formViewModel: HomeViewModel = HomeViewModel(),
+    formViewModel: HomeViewModel = hiltViewModel(),
     viewModel: FormCustoFixoViewModel = hiltViewModel()
 ) {
     val uiState by viewModel.uiState.collectAsState()

@@ -3,4 +3,5 @@
     <string name="custo_variavel">Custo Variavel</string>
     <string name="custo_fixo">Custo Fixo</string>
     <string name="quantiade">Quantidade de Produtos</string>
+    <string name="nome">Digite o nome do produto</string>
 </resources>
